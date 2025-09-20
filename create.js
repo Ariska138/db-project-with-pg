@@ -1,8 +1,8 @@
 import pool from './utils/db.js';
 
-async function tambahSantri(namaSantri = 'ibrahim', alamatSantri = 'banyumas') {
+export async function tambahSantri(namaSantri = 'ibrahim', alamatSantri = 'banyumas') {
   try {
-    
+
     const queryText = `insert into santri(name, alamat) values($1, $2) returning *`;
     const res = await pool.query(queryText, [namaSantri, alamatSantri]);
 
@@ -12,9 +12,8 @@ async function tambahSantri(namaSantri = 'ibrahim', alamatSantri = 'banyumas') {
   } catch (err) {
     console.error('Gagal menambahkan santri', err.stack);
   } finally {
-    await pool.end();
+    // await pool.end();
   }
 }
 
-tambahSantri();
 

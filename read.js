@@ -1,6 +1,6 @@
 import pool from './utils/db.js';
 
-async function lihatSantri() {
+export async function lihatSantri() {
   try {
     // Query SQL untuk SELECT semua data
     const res = await pool.query('SELECT * FROM santri ORDER BY id ASC');
@@ -12,16 +12,13 @@ async function lihatSantri() {
 
     console.log('Daftar Santri:');
     // Looping untuk menampilkan setiap baris data
-    res.rows.forEach(santri => {
+    res.rows.forEach((santri) => {
       console.log(`ID: ${santri.id}, Nama: ${santri.name}, Alamat: 
 ${santri.alamat}`);
     });
-
   } catch (err) {
     console.error('Gagal mengambil data santri:', err.stack);
   } finally {
-    await pool.end();
+    // await pool.end();
   }
 }
-
-lihatSantri();
