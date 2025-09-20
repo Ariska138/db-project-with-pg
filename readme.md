@@ -11,8 +11,9 @@ DB_PORT=5432
 ```
 
 cara jalanin
+
 ```bash
-node create.js
+npm run start
 #or 
-node read.js
+node app.js
 ```
